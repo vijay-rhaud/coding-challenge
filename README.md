@@ -1,4 +1,4 @@
-# coding-challenge
+# Vue JS Coding Challenge
 This is a coding challenge for APT Solutions Ltd
 
 ## Project setup
