@@ -2,29 +2,50 @@
     background-color: #222;
     width: 100%;
     height: 50px;
-    padding: 32px 0;
+    padding: 48px 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
     text-align: center;
+}
+@media (min-width: 576px) {
+    .search-bar-container {
+        flex-direction: row;
+        padding: 32px 0;
+    }
 }
 .search-bar-title {
     color: #fff;
     letter-spacing: 1px;
     font-size: 20px;
     font-weight: 400;
-    margin-right: 16px;
+    margin-bottom: 16px;
+}
+@media (min-width: 576px) {
+    .search-bar-title {
+        color: #fff;
+        letter-spacing: 1px;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-right: 16px;
+    }
 }
 .search-bar {
     background-color: transparent;
     height: 32px;
     padding: 4px 8px;
-    width: 350px;
+    width: 200px;
     border: 2px solid #ec008c;
     border-radius: 0px;
     color: #fff;
     font-size: 20px;
+}
+@media (min-width: 576px) {
+    .search-bar {
+        width: 350px;
+    }
 }
 .search-bar:focus {
     outline: 0px solid transparent;
