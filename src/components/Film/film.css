@@ -1,30 +1,46 @@
-.film-grid-container {
+.film-container {
     display: grid;
     grid-template-columns: auto;
-    grid-column-gap: 12px;    
-    margin-top: 12px;
-    padding: 12px 24px;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+    margin: 20px 0;
+    padding: 0 24px;
 }
 @media (min-width: 768px) {
-    .film-grid-container {
+    .film-container {
+        grid-template-columns: auto auto;
+    }
+}
+@media (min-width: 992px) {
+    .film-container {
         grid-template-columns: auto auto auto;
-        grid-column-gap: 24px;
-        margin-top: 0;        
-        padding: 12px 24px;
     }
 }
-.film-grid-item {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    padding: 24px;
-    font-size: 24px;
-    text-align: center;
-    border-radius: 12px;
-    text-align: center;
-    margin: 16px 0px;
-}
-@media (min-width: 768px) {
-    .film-grid-item {
-        margin: 24px 0;
+@media (min-width: 1200px) {
+    .film-container {
+        grid-template-columns: auto auto auto auto;
     }
+}
+.film-card {
+    text-align: center;
+    margin: 24px 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #dedede;
+}
+.image-container {
+    width: 100%;
+}
+.image {
+    width: 240px;
+    height: 350px;
+}
+.film-info {
+    width: 200px;
+    margin: 24px 0;
 }

@@ -1,14 +1,31 @@
 <template>
-    <div class="film-grid-container">
-        <div class="film-grid-item">1</div>
-        <div class="film-grid-item">2</div>
-        <div class="film-grid-item">3</div>
+  <div>
+    <div class="film-container">
+      <div v-for="(film, index) in listOfFilms" :key="index">
+        <div class="film-card">
+          <div class="image-container">
+            <img :src="film.imageUrl" class="image"/>
+          </div>
+          <div class="film-info">
+            <h2 class="film-title">{{film.title}}</h2>
+            <br/>
+            <h3 class="film-director">{{film.director}}</h3>
+            <br/>
+            <p class="text">Release Date: {{film.releaseTimeStamp}}</p>
+            <br/>
+            <p class="text">Run Time: {{film.runtime}}</p>
+            <br/>
+            <p class="text">Rating: {{film.stars}}/5</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Film'
+  props: ['listOfFilms']
 }
 </script>
 

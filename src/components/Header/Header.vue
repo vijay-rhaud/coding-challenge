@@ -4,6 +4,7 @@
       <span class="grey">APT Solutions </span>
       <span class="pink">Movie Database</span>
     </h1>
+    <p class="text">By Vijay Rhaud</p>
   </div>
 </template>
 

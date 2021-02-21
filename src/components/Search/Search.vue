@@ -1,13 +1,17 @@
 <template>
   <div class="search-bar-container">
-    <h2 class="search-bar-title">Search:</h2>
-    <input class="search-bar">
+    <input class="search-bar" v-model="searchQuery" placeholder="Search">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Search'
+  name: 'Search',
+  data: function () {
+    return {
+      searchQuery: ''
+    }
+  }
 }
 </script>
 
