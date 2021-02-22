@@ -1,6 +1,6 @@
 .film-container {
     display: grid;
-    grid-template-columns: auto;
+    grid-template-columns: 1fr;
     grid-column-gap: 24px;
     grid-row-gap: 24px;
     margin: 20px 0;
@@ -8,17 +8,17 @@
 }
 @media (min-width: 768px) {
     .film-container {
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
     }
 }
 @media (min-width: 992px) {
     .film-container {
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 }
 @media (min-width: 1200px) {
     .film-container {
-        grid-template-columns: auto auto auto auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 }
 .film-card {

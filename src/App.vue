@@ -1,7 +1,10 @@
 <template>
   <div id="app">
+    {{searchQuery}}
+    <br/>
+    {{listOfFilms}}
     <Header/>
-    <Search/>
+    <Search @user-search="storeSearch"/>
     <Film :listOfFilms="listOfFilms"/>
   </div>
 </template>
@@ -10,6 +13,7 @@
 import Header from './components/Header/Header.vue'
 import Search from './components/Search/Search.vue'
 import Film from './components/Film/Film.vue'
+import Fuse from 'fuse.js'
 // import axios from 'axios'
 
 export default {
@@ -23,9 +27,9 @@ export default {
         {"title": "Godzilla", "director": "Ishirō Honda", "releaseTimeStamp": -504748800, "runtime": 96, "stars": 5, "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Gojira_1954_Japanese_poster.jpg/440px-Gojira_1954_Japanese_poster.jpg"}, 
         {"title": "Predator", "director": "John McTiernan", "releaseTimeStamp": 550450800, "runtime": 107, "stars": 5, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/9/95/Predator_Movie.jpg"}, 
         {"title": "Aliens", "director": "James Cameron", "releaseTimeStamp": 522025200, "runtime": 137, "stars": 4, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fb/Aliens_poster.jpg"}, 
-        {"title": "Terminator 2: Judgment Day", "director": "James Cameron", "releaseTimeStamp": 678495600, "runtime": 137, "stars": 3, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/85/Terminator2poster.jpg"},
-        {"title": "Terminator 2: Judgment Day", "director": "James Cameron", "releaseTimeStamp": 678495600, "runtime": 137, "stars": 3, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/85/Terminator2poster.jpg"}        
-      ]
+        {"title": "Terminator 2: Judgment Day", "director": "James Cameron", "releaseTimeStamp": 678495600, "runtime": 137, "stars": 3, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/85/Terminator2poster.jpg"}
+      ],
+      searchQuery: ''
     }
   },
   // mounted () {
@@ -34,6 +38,22 @@ export default {
   //     .then(response => (this.listOfFilms = response.data))
   //     .then(response => (console.log(response.data[0])))
   // },
+  methods: {
+    storeSearch(value) {
+      this.searchQuery = value;
+      const fuse = new Fuse(this.listOfFilms, {
+        keys: [
+          'title',
+          'director'
+        ],
+        isCaseSensitive: true,
+        shouldSort: true
+      });
+      const results = fuse.search(this.searchQuery);
+      this.listOfFilms = results.map(listOfFilms => listOfFilms.item);
+    }
+
+  },
   components: {
     Header,
     Search,

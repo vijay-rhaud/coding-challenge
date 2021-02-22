@@ -10,6 +10,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "fuse.js": "^6.4.6",
+    "fuzzy-search": "^3.2.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {
