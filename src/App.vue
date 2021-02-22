@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    {{searchQuery}}
-    <br/>
-    {{listOfFilms}}
+    <button @click="unixConverter()">Edit Unix</button>
     <Header/>
     <Search @user-search="storeSearch"/>
     <Film :listOfFilms="listOfFilms"/>
@@ -51,8 +49,12 @@ export default {
       });
       const results = fuse.search(this.searchQuery);
       this.listOfFilms = results.map(listOfFilms => listOfFilms.item);
+    },
+    unixConverter() {
+      let unixTime = 602467200;
+      let convertedTime = new Date(unixTime * 1000);
+      console.log(convertedTime.toDateString());
     }
-
   },
   components: {
     Header,
