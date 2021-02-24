@@ -52,7 +52,10 @@ export default {
     }
   },
   computed: {
-  },  
+    databaseSearch() {
+      return this.listOfFilms;
+    }
+  },
   components: {
     Header,
     Search,
