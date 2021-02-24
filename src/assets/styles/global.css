@@ -11,6 +11,7 @@ h1, h2, h3, h4, h5, h6, p, ol, li, a {
 }
 .film-title {
     font-size: 24px;
+    word-wrap: break-word;
 }
 .film-director {
     font-size: 20px;
