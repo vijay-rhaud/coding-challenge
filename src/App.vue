@@ -1,9 +1,8 @@
 <template>
   <div id="app">
     <Header/>
-    <Search @user-search="searchDatabase"/>
-    <FilmList :listOfFilms="listOfFilms"/>
-
+    <Search @user-search="storeSearch"/>
+    <FilmList :listOfFilms="databaseSearch"/>
   </div>
 </template>
 
@@ -27,33 +26,33 @@ export default {
         {"title": "Aliens", "director": "James Cameron", "releaseTimeStamp": 522025200, "runtime": 137, "stars": 4, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/f/fb/Aliens_poster.jpg"}, 
         {"title": "Terminator 2: Judgment Day", "director": "James Cameron", "releaseTimeStamp": 678495600, "runtime": 137, "stars": 3, "imageUrl": "https://upload.wikimedia.org/wikipedia/en/8/85/Terminator2poster.jpg"}
       ],
-      searchQuery: 'lol'
+      searchValue: ''
     }
   },
   // mounted () {
   //   axios
-  //     .get('https://coding-challenges.aptsolutions.net/movies.json')
+  //     .get('https://coding-challenges.aptsolutions.net/api/movies.json')
   //     .then(response => (this.listOfFilms = response.data))
   //     .then(response => (console.log(response.data[0])))
   // },
   methods: {
-    searchDatabase(value) {
-      this.searchQuery = value;
+    storeSearch(value) {
+      this.searchValue = value;
+    }
+  },
+  computed: {
+    databaseSearch() {
+      let searchQuery = this.searchValue;
       const fuse = new Fuse(this.listOfFilms, {
         keys: [
           'title',
           'director'
         ],
         isCaseSensitive: true,
-        shouldSort: true
+        threshold: 0.3
       });
-      const results = fuse.search(this.searchQuery);
-      this.listOfFilms = results.map(listOfFilms => listOfFilms.item);
-    }
-  },
-  computed: {
-    databaseSearch() {
-      return this.listOfFilms;
+      const results = fuse.search(searchQuery);
+      return searchQuery ? results.map(listOfFilms => listOfFilms.item) :this.listOfFilms;
     }
   },
   components: {
