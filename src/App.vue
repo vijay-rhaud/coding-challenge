@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import Header from './components/Header/Header.vue'
-import Search from './components/Search/Search.vue'
-import FilmList from './components/FilmList/FilmList.vue'
-import Fuse from 'fuse.js'
-// import axios from 'axios'
+  import Header from './components/Header/Header.vue'
+  import Search from './components/Search/Search.vue'
+  import FilmList from './components/FilmList/FilmList.vue'
+  import Fuse from 'fuse.js'
+  // import axios from 'axios'
 
 export default {
   name: 'App',
@@ -49,7 +49,7 @@ export default {
           'director'
         ],
         isCaseSensitive: true,
-        threshold: 0.3
+        threshold: 0.5
       });
       const results = fuse.search(searchQuery);
       return searchQuery ? results.map(listOfFilms => listOfFilms.item) :this.listOfFilms;
